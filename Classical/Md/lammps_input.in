@@ -15,7 +15,7 @@ mass      1  4.002602
 #           Interactions
 #####################################
 pair_style    table spline 1000
-pair_coeff    * * /Users/alois/Documents/Physique/Work/Helium/HeAziz.table HeHe_Aziz
+pair_coeff    * * HeAziz.table HeHe_Aziz
 #####################################
 
 
