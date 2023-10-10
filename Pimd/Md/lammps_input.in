@@ -1,0 +1,54 @@
+# LAMMPS input file to run a MLMD simulation for MLACS
+#####################################
+#           General parameters
+#####################################
+atom_modify map yes
+units        metal
+boundary     p p p
+atom_style atomic
+read_data    atoms.in
+mass      1  4.002602
+variable ibead uloop 64 pad
+#####################################
+
+
+
+#####################################
+#           Interactions
+#####################################
+pair_style    table spline 1000
+pair_coeff    * * HeAziz.table HeHe_Aziz
+#####################################
+
+
+
+#####################################
+#      Thermostat/Integrator
+#####################################
+timestep      0.0005
+fix f1 all pimd/langevin temp 38 integrator baoab thermostat PILE_L 49306020 tau  $(100*dt) scale 1.0 fmmode physical fmass 64 fixcom yes ensemble nvt
+#####################################
+
+
+
+#####################################
+#           Dumping
+#####################################
+dump dum1 all custom 100 mlmd.traj_${ibead} id type xu yu zu vx vy vz fx fy fz element
+dump_modify dum1 append yes
+dump_modify dum1 element He
+#####################################
+
+
+
+#####################################
+#         Dump last step
+#####################################
+dump last all custom 250000 configurations.out_${ibead}  id type xu yu zu vx vy vz fx fy fz element
+dump_modify last element He
+dump_modify last delay 250000
+#####################################
+
+
+
+run  250000

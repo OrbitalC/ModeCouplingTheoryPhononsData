@@ -1,0 +1,54 @@
+# LAMMPS input file to run a MLMD simulation for MLACS
+#####################################
+#           General parameters
+#####################################
+units        metal
+boundary     p p p
+atom_style atomic
+read_data    atoms.in
+mass      1  4.002602
+#####################################
+
+
+
+#####################################
+#           Interactions
+#####################################
+pair_style    table spline 1000
+pair_coeff    * * /Users/alois/Documents/Physique/Work/Helium/HeAziz.table HeHe_Aziz
+#####################################
+
+
+
+#####################################
+#      Thermostat/Integrator
+#####################################
+timestep      0.0005
+fix  f1 all langevin 38 38  $(100*dt) 947926 gjf vhalf zero yes
+fix   f2 all nve
+fix    fcm all recenter INIT INIT INIT
+#####################################
+
+
+
+#####################################
+#           Dumping
+#####################################
+dump dum1 all custom 100 mlmd.traj id type xu yu zu vx vy vz fx fy fz element 
+dump_modify dum1 append yes
+dump_modify dum1 element He
+#####################################
+
+
+
+#####################################
+#         Dump last step
+#####################################
+dump last all custom 250000 configurations.out  id type xu yu zu vx vy vz fx fy fz element
+dump_modify last element He
+dump_modify last delay 250000
+#####################################
+
+
+
+run  250000
