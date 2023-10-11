@@ -12,16 +12,9 @@ figname = "IrreducibleIFC.pdf"
 # We will need this to convert tdep outpus
 units = Hartree / Bohr**2
 
-# If you want to use my data, set this to true
-# If you rerun your simulation (and it's in */Tdep), you can set it to False
-usereference = True
-
-if usereference:
-    pimdfd = root / "Pimd/TdepReference"
-    clasfd = root / "Classical/TdepReference"
-else:
-    pimdfd = root / "Pimd/Tdep"
-    clasfd = root / "Classical/Tdep"
+# Define some path to the results
+pimdfd = root / "Pimd/Tdep"
+clasfd = root / "Classical/Tdep"
 pertfd = root / "Perturbation/Tdep"
 schafd = root / "Scha/Tdep"
 

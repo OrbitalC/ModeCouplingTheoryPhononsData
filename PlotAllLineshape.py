@@ -13,15 +13,8 @@ savefile = "Fcc_38K_Aziz.pdf"
 ommax = 22
 thz = 4.135665538536
 
-# If you want to use my data, set this to true
-# If you rerun your simulation (and it's in */Tdep), you can set it to False
-usereference = True
-
 # Load data from pimd
-if usereference:
-    folder = root / "Pimd/TdepReference"
-else:
-    folder = root / "Pimd/Tdep"
+folder = root / "Pimd/Tdep"
 ls = File(folder / "outfile.phonon_spectral_function.hdf5")
 omega_pimd = np.array(ls.get("energy_values")) * thz
 specf_pimd = np.array(ls.get("spectral_function")) / thz
@@ -30,10 +23,7 @@ lticks = [r"$\Gamma$", "X", "U/K", r"$\Gamma$", "L"]
 qticks_pimd = np.array(ls.get("q_ticks"))
 
 # Load data from classical md
-if usereference:
-    folder = root / "Classical/TdepReference"
-else:
-    folder = root / "Classical/Tdep"
+folder = root / "Classical/Tdep"
 omega_md = np.array(ls.get("energy_values")) * thz
 specf_md = np.array(ls.get("spectral_function")) / thz
 qval_md = np.array(ls.get("q_values"))
