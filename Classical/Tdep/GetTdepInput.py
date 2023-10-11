@@ -7,7 +7,7 @@ from ase.units import GPa
 
 root = Path().absolute()
 nthrow = 100
-traj = read(root.parent / "Md/Traj.traj", f"{nthrow}:")
+traj = read(root.parent / "Md/MdTraj.traj", f"{nthrow}:")
 sim_temperature = 38
 dt = 0.5  # in fs
 
@@ -34,7 +34,7 @@ for i, at in enumerate(traj):
 fmt = "%20.15f"
 np.savetxt("infile.positions", pos.reshape((nat * nsteps, 3)), fmt)
 np.savetxt("infile.forces", forces.reshape((nat * nsteps, 3)), fmt)
-fmt = "% 4d" + 12 * "%15.10f"
+fmt = "%4d " + 12 * "%15.10f"
 np.savetxt("infile.stat", statdata, fmt)
 
 with open("infile.meta", "w") as fd:
