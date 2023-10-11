@@ -8,9 +8,9 @@ To run the simulations, you need
     - At least 64 cpu available
     - A version of LAMMPS compiled with the replica PACKAGE
 - For the spectral function
-    - The [https://github.com/tdep-developers/tdep](TDEP) code
+    - The TDEP code available on <https://github.com/tdep-developers/tdep>
 - For some pre/post-processing
-    - Python with numpy, matplotlib, ase, h5py - can be installed with pip (not that for ASE, you need the developper version available on [https://gitlab.com/ase/ase](gitlab)
+    - Python with numpy, matplotlib, ase, h5py - can be installed with pip (not that for ASE, you need the developper version available on <https://gitlab.com/ase/ase>
 
 Note that to exactly reproduce the results, you need to slightly modify the sources of TDEP to compute the spectral function with equation 39 of the paper.
 These modifications should happen in the file `src/lineshape/lineshape_helper.f90` and consist in modifying some omega with BigOmega(i).
