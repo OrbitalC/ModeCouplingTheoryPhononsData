@@ -8,7 +8,7 @@ To run the simulations, you need
     - At least 64 cpu available
     - A version of LAMMPS compiled with the replica PACKAGE
 - For the spectral function
-    - [https://github.com/tdep-developers/tdep](The TDEP code)
+    - The [https://github.com/tdep-developers/tdep](TDEP) code
 - For some pre/post-processing
     - Python with numpy, matplotlib, ase, h5py - can be installed with pip (not that for ASE, you need the developper version available on [https://gitlab.com/ase/ase](gitlab)
 
