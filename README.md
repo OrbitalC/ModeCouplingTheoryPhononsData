@@ -22,7 +22,7 @@ For Pimd and Classical, you can find LAMMPS input to run the simulations in the 
 To run them, you can simply use the bash script in increasing order. Note that you need to to have a binary lmp_mpi in your PATH, and in the case of PIMD, access to 64 CPU.
 I also put the resulting trajectories in a ASE format.
 In the Tdep folder, you will find everything to generate the spectral function on path in order to reproduce the figure 3. of the paper.
-To do this, you can simply execute the bash files in increasing order. Nothe that you need to have added the tdep binary in your PATH, as proposed at the end of the TDEP compilation.
+To do this, you can simply execute the bash files in increasing order. Note that you need to have added the tdep binary in your PATH, as proposed at the end of the TDEP compilation.
 
 Once the spectral function have been computed for each approximation, you can execute the `PlotAllLineshape.py` script in the root of this repository to generate the figure 3 of the paper.
 
